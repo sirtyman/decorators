@@ -42,6 +42,22 @@ def repeat(_func=None, *, times=2):
         return decorator_repeat(_func)
 
 
+def repeat_v2(_func=None, times=2):
+    """Decorator to repeat n-times execution of a function. Use partial."""
+    if not callable(_func):
+        if _func is not None:
+            return functools.partial(repeat_v2, times=_func)
+        else:
+            return functools.partial(repeat_v2, times=times)
+
+    @functools.wraps(_func)  # keep the original function __doc__ and __name__
+    def wrapper(*args, **kwargs):
+        for _ in range(times):
+            value = _func(*args, *kwargs)
+        return value
+    return wrapper
+
+
 def timer(func):
     """Print the runtime of the decorated function."""
     @functools.wraps(func)  # keep the original function __doc__ and __name__
