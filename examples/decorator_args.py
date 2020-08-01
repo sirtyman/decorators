@@ -27,9 +27,9 @@ def greetings_with_partial_v2(name):
 
 
 if __name__ == "__main__":
-    # greeting("My Lord")
-    # greetings("My Lord")
-    # greeting_with_partial("Marcin")
+    greeting("My Lord")
+    greetings("My Lord")
+    greeting_with_partial("Marcin")
     greetings_with_partial("Ela")
     greetings_with_partial_v2("Zigi")
 
